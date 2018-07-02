@@ -58,7 +58,6 @@ def main():
 
     q = initialize(jobs)
     log = round(q, quantum)
-    print(log)
 
     for _round in log:
         for process in _round:
