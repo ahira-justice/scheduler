@@ -17,14 +17,19 @@ def initialize(jobs):
 
     for i in list(range(1, len(jobs))):
         job = jobs[i]
-        process = Process(job[0], int(job[1]), int(job[2]))
+        process = Process(job[0], job[1], job[2])
         q.put(process)
 
     return q
 
 
 def dump_to_log(q):
-    round_log = list(q.queue)
+    round_log = []
+    _round = list(q.queue)
+
+    for process in _round:
+        round_log.append([process.name, process.burst])
+
     return round_log
 
 
@@ -34,12 +39,12 @@ def round(q, quantum):
 
     while q.empty() == False:
         process = q.get()
+        process.decrease(quantum)
 
-        if process.status == 'active':
-            process.decrease_burst(quantum)
-        
-        if process.status != 'deactivated':
+        if process.burst > 0:
             q.put(process)
+        elif process.burst < 0:
+            process.set_burst(0)
 
         log.append(dump_to_log(q))
     
@@ -53,11 +58,11 @@ def main():
 
     q = initialize(jobs)
     log = round(q, quantum)
+    print(log)
 
-    for round_log in log:
-        for process in round_log:
-            out = [process.name, process.burst]
-            output_string = inout.writeToString(out, output_string)
+    for _round in log:
+        for process in _round:
+            output_string = inout.writeToString(process, output_string)
         output_string += '\n\n'
     
     inout.writeToFile(output_string, 'log.txt')

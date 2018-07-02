@@ -7,16 +7,13 @@
 class Process:
     def __init__(self, name, arrival, burst):
         self.name = name
-        self.arrival = arrival
-        self.burst = burst
-        self.status = 'active'
+        self.arrival = int(arrival)
+        self.burst = int(burst)
 
-    def decrease_burst(self, amount):
-        if self.status == 'active':
-            self.burst -= amount
-        
-        if self.burst <= 0:
-            self.deactivate()
 
-    def deactivate(self):
-        self.status = 'deactivated'
+    def set_burst(self, value):
+        self.burst = value
+
+
+    def decrease(self, value):
+        self.burst -= value
