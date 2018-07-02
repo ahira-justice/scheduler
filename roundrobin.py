@@ -41,10 +41,11 @@ def round(q, quantum):
         process = q.get()
         process.decrease(quantum)
 
-        if process.burst > 0:
-            q.put(process)
-        elif process.burst < 0:
+        if process.burst < 0:
             process.set_burst(0)
+            process.set_status('complete')
+        elif process.burst > 0:
+            q.put(process)
 
         log.append(dump_to_log(q))
     
