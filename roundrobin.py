@@ -7,39 +7,34 @@
 import os
 import sys
 
-
-def readFile(filename):
-    assert os.path.exists(filename), 'Cannot find the file: %s' % (filename)
-    file = open(filename, 'r')
-    content = []
-    for line in file:
-        newLine = line.split()
-        content.append(newLine)
-    file.close()
-    return content
+import inputoutput
+from queue import Queue
+from process import Process
 
 
-def writeToFile(output, name):
-    file = open(name, 'w')
-    file.write(output)
-    file.close()
-    sys.exit()
+def initialize(jobs):
+    q = Queue()
 
+    for i in list(range(1, len(jobs))):
+        job = jobs[i]
+        process = Process(job[0], job[1], job[2])
+        q.put(process)
 
-def writeToOutput(output, out_print):
-    for item in output:
-        item = str(item)
-        out_print += item + '\t'
-    out_print += '\n'
+    return q
 
-    return out_print
+def round(q, quantum):
+    while q.empty() == False:
+        process = q.get()
+
+        if process.burst > quantum:
+            process.decrease_burst(quantum)
 
 
 def main():
-    processes = readFile('process.txt')
-    print (processes)
-    quantum = processes[0]
+    jobs = inputoutput.readFile('process.txt')
+    quantum = jobs[0]
 
+    q = initialize(jobs)
 
 
 if __name__ == '__main__':
