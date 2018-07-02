@@ -1,3 +1,9 @@
+"""
+    Adefokun Ahira Justice
+    justiceahira@gmail.com
+"""
+
+
 import os
 import sys
 
@@ -13,11 +19,7 @@ def readFile(filename):
 
 
 def writeToFile(output, filename):
-    if os.path.exists(filename):
-        file = open(filename, 'a')
-    else:
-        file = open(filename, 'w')
-
+    file = open(filename, 'w')
     file.write(output)
     file.close()
     sys.exit()

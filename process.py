@@ -1,3 +1,9 @@
+"""
+    Adefokun Ahira Justice
+    justiceahira@gmail.com
+"""
+
+
 class Process:
     def __init__(self, name, arrival, burst):
         self.name = name
@@ -6,10 +12,11 @@ class Process:
         self.status = 'active'
 
     def decrease_burst(self, amount):
-        self.burst -= amount
+        if self.status == 'active':
+            self.burst -= amount
         
         if self.burst <= 0:
             self.deactivate()
 
     def deactivate(self):
-        self.status = 'deactivate'
+        self.status = 'deactivated'
