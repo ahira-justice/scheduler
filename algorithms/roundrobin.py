@@ -7,9 +7,10 @@
 import os
 import sys
 
-import inout
 from queue import Queue
-from process import Process
+
+from iom import inout
+from process.process import Process
 
 
 def initialize(jobs):
@@ -50,24 +51,3 @@ def round(q, quantum):
         log.append(dump_to_log(q))
     
     return log
-
-
-def main():
-    output_string = ''
-    jobs = inout.readFile('process.txt')
-    quantum = int(jobs[0][0])
-
-    q = initialize(jobs)
-    log = round(q, quantum)
-
-    for _round in log:
-        for process in _round:
-            output_string = inout.writeToString(process, output_string)
-        output_string += '\n\n'
-    
-    inout.writeToFile(output_string, 'log.txt')
-
-
-
-if __name__ == '__main__':
-    main()

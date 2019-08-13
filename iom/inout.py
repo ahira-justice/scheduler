@@ -7,6 +7,7 @@
 import os
 import sys
 
+
 def readFile(filename):
     assert os.path.exists(filename), 'Cannot find the file: %s' % (filename)
     file = open(filename, 'r')
