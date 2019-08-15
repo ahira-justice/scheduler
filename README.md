@@ -31,7 +31,7 @@ The Schedule class inherits from a **Algorithm** class. This Algorithm class con
 
 A _self.name_ should be defined for each Schedule class.
 
-_sample_ **custom_algorithm**
+_sample_ **custom_algorithm.py**
 ```sh
 from . import algorithm
 from process.process import Process
