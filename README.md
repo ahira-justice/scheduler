@@ -71,6 +71,12 @@ The subsequent lines define a job each. The first value is the job's designation
 git clone https://github.com/ahira-justice/scheduler.git
 ```
 
+After cloning **scheduler**, run the below command from it's base directory to install **scheduler**'s dependencies.
+
+```sh
+pip install -r requrements.txt
+```
+
 To run your custom algorithm
 
 ```sh
@@ -80,11 +86,6 @@ scheduler.py --algo custom_algorithm
 ## Dependencies
 ```sh
 click
-```
-
-After cloning **scheduler**, run the below command from it's base directory to install **scheduler**'s dependencies.
-```sh
-pip install -r requrements.txt
 ```
 
 ## License
