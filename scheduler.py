@@ -14,7 +14,7 @@ BASE_DIR = os.path.join(os.path.dirname(__file__))
 
 
 @click.command()
-@click.option('-a', '--algo', default="", help='name of sheduling algorithm')
+@click.option('-a', '--algo', default="", help='Name of sheduling algorithm.')
 def main(algo):
     package = 'algorithms'
     algorithm = getattr(__import__(package, fromlist=[algo]), algo)
