@@ -40,7 +40,14 @@ class Schedule(algorithm.Algorithm):
     def __init__(self, jobs):
         super().__init__(jobs)
         self.name = 'fcfs'
-
+    
+    def run(self):
+        #Implentation code goes here.
+        
+    def setquantum(self, value=0):
+        #self.quantum = value
+        #or
+        #pass
 ```
 
 **run()** must be overridden. **setquantum()** is to be overridden as applicable.
