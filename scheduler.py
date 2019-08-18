@@ -10,7 +10,7 @@ import click
 from iom import inout
 
 
-BASE_DIR = os.path.join(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 @click.command()
