@@ -5,7 +5,6 @@
 
 
 from . import algorithm
-from process.process import Process
 
 
 class Schedule(algorithm.Algorithm):
@@ -17,7 +16,7 @@ class Schedule(algorithm.Algorithm):
         self.log = []
         self.log.append(self.dump_to_log())
 
-        while self.q.empty() == False:
+        while self.q.empty() is False:
             process = self.q.get()
             process.decrease(process.burst)
 
@@ -25,5 +24,5 @@ class Schedule(algorithm.Algorithm):
             process.set_status('complete')
 
             self.log.append(self.dump_to_log())
-        
+
         return self.log

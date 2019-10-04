@@ -5,7 +5,6 @@
 
 
 from . import algorithm
-from process.process import Process
 
 
 class Schedule(algorithm.Algorithm):
@@ -13,16 +12,14 @@ class Schedule(algorithm.Algorithm):
         super().__init__(jobs)
         self.name = 'roundrobin'
 
-    
     def setquantum(self, value):
         self.quantum = value
-
 
     def run(self):
         self.log = []
         self.log.append(self.dump_to_log())
 
-        while self.q.empty() == False:
+        while self.q.empty() is False:
             process = self.q.get()
             process.decrease(self.quantum)
 
@@ -33,5 +30,5 @@ class Schedule(algorithm.Algorithm):
                 self.q.put(process)
 
             self.log.append(self.dump_to_log())
-        
+
         return self.log

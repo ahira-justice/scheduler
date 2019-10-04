@@ -11,14 +11,11 @@ class Process:
         self.burst = int(burst)
         self.status = 'active'
 
-
     def set_burst(self, value):
         self.burst = value
 
-    
     def set_status(self, value):
         self.status = value
-
 
     def decrease(self, value):
         self.burst -= value

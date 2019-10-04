@@ -13,7 +13,7 @@ class Algorithm:
         self.quantum = 0
         self.log = []
         self.round_log = []
-        
+
         self.q = Queue()
 
         for i in list(range(1, len(jobs))):
@@ -21,10 +21,8 @@ class Algorithm:
             process = Process(job[0], job[1], job[2])
             self.q.put(process)
 
-
     def setquantum(self, value):
         pass
-
 
     def dump_to_log(self):
         self.round_log = []
@@ -34,7 +32,6 @@ class Algorithm:
             self.round_log.append([process.name, process.burst])
 
         return self.round_log
-
 
     def run(self):
         pass

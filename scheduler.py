@@ -32,8 +32,9 @@ def main(algo):
         for process in _round:
             output_string = inout.writeToString(process, output_string)
         output_string += '\n\n'
-    
-    inout.writeToFile(output_string, os.path.join(BASE_DIR, 'log/{}.txt'.format(schedule.name)))
+
+    inout.writeToFile(output_string, os.path.join(
+        BASE_DIR, 'log/{}.txt'.format(schedule.name)))
 
 
 if __name__ == '__main__':
